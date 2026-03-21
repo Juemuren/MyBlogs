@@ -1,0 +1,12 @@
+# 编辑器
+.vscode/
+
+# 导出
+*.zhihu.md
+/public
+
+# 草稿
+draft/
+
+# 配置
+.hugo_build.lock
