@@ -1,0 +1,81 @@
+baseURL: https://juemuren.github.io/MyBlogs
+languageCode: zh-cn
+title: 无限能指
+theme: PaperMod
+mainSections: ["posts"]
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - $$
+            - $$
+          inline:
+          - - $
+            - $
+        enable: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+caches:
+  images:
+    dir: :cacheDir/images
+
+languages:
+  zh:
+    languageName: 简体中文
+    menu:
+      main:
+        - name: 主页
+          url: /
+          weight: 1
+        - name: 合集
+          url: /posts
+          weight: 2
+        - name: 类别
+          url: /categories
+          weight: 3
+        - name: 标签
+          url: /tags
+          weight: 4
+        - name: 搜索
+          url: /search
+          weight: 5
+        - name: 归档
+          url: /archives
+          weight: 6
+
+params:
+  showToc: true
+  tocOpen: true
+  showWordCount: true
+  showReadingTime: true
+  hideFooter: true
+
+  author: 冯玉
+  assets:
+    favicon: /favicon.svg
+
+  profileMode:
+    enabled: true
+    title: 无限能指
+    subtitle: 在逻辑、思辨与诗意间滑动
+    imageUrl: /favicon.svg
+    imageTitle: 无限能指
+    imageWidth: 250
+    imageHeight: 250
+    buttons:
+      - name: 仓库
+        url: https://github.com/juemuren/MyBlogs
+
+  socialIcons:
+    - name: github
+      url: https://github.com/Juemuren
+    - name: zhihu
+      url: https://www.zhihu.com/people/yan-xi-2-31
