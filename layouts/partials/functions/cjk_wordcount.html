@@ -1,0 +1,15 @@
+{{- /* CJK-aware word count + reading time helper */ -}}
+{{- $plain := .Plain | plainify -}}
+{{- $cjkCount := len (findRE "[\\p{Han}\\p{Hiragana}\\p{Katakana}\\p{Hangul}]" $plain) -}}
+{{- $latinCount := len (findRE "[\\p{Latin}\\p{Nd}]+" $plain) -}}
+{{- $computed := .WordCount -}}
+{{- if gt $cjkCount 0 -}}
+  {{- $computed = add $latinCount $cjkCount -}}
+{{- end -}}
+{{- $reading := div $computed 400 -}}
+{{- if lt $reading 1 -}}
+  {{- $reading = 1 -}}
+{{- end -}}
+{{- .Scratch.Set "cjk_word_count" $computed -}}
+{{- .Scratch.Set "cjk_reading_time" $reading -}}
+
