@@ -60,13 +60,13 @@ params:
 
   author: 冯玉
   assets:
-    favicon: /favicon.svg
+    favicon: /MyBlogs/favicon.svg
 
   profileMode:
     enabled: true
     title: 无限能指
     subtitle: 在逻辑、思辨与诗意间滑动
-    imageUrl: /favicon.svg
+    imageUrl: /MyBlogs/favicon.svg
     imageTitle: 无限能指
     imageWidth: 250
     imageHeight: 250
