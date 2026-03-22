@@ -12,13 +12,28 @@
   crossorigin="anonymous">
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-          ],
-          throwOnError : false
-        });
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+      ],
+      throwOnError : false
     });
+    document.querySelectorAll('.katex-display').forEach(el => {
+      if (!el.closest('.katex-scroll')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'katex-scroll';
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+      }
+    });
+  });
 </script>
+<style>
+.katex-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+</style>
