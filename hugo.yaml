@@ -4,6 +4,8 @@ title: 无限能指
 theme: PaperMod
 mainSections: ["posts"]
 
+googleAnalytics: G-79T7Y2J3Z6
+
 markup:
   goldmark:
     extensions:
@@ -52,6 +54,7 @@ languages:
           weight: 6
 
 params:
+  env: production
   showToc: true
   tocOpen: true
   showWordCount: true
