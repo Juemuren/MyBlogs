@@ -74,6 +74,12 @@ params:
     imageWidth: 250
     imageHeight: 250
     buttons:
+      - name: 合集
+        url: /MyBlogs/posts
+      - name: 类别
+        url: /MyBlogs/categories
+      - name: 标签
+        url: /MyBlogs/tags
       - name: 仓库
         url: https://github.com/juemuren/MyBlogs
 
