@@ -63,23 +63,23 @@ params:
 
   author: 冯玉
   assets:
-    favicon: /MyBlogs/favicon.svg
+    favicon: favicon.svg
 
   profileMode:
     enabled: true
     title: 无限能指
     subtitle: 在逻辑、思辨与诗意间滑动
-    imageUrl: /MyBlogs/favicon.svg
+    imageUrl: favicon.svg
     imageTitle: 无限能指
     imageWidth: 250
     imageHeight: 250
     buttons:
       - name: 合集
-        url: /MyBlogs/posts
+        url: posts
       - name: 类别
-        url: /MyBlogs/categories
+        url: categories
       - name: 标签
-        url: /MyBlogs/tags
+        url: tags
       - name: 仓库
         url: https://github.com/juemuren/MyBlogs
 
