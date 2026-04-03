@@ -5,3 +5,7 @@
 {{ if .Store.Get "hasTikz" }}
 {{ partial "tikz.html" . }}
 {{ end }}
+
+{{ if .Store.Get "hasMermaid" }}
+{{ partial "mermaid.html" . }}
+{{ end }}

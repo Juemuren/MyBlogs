@@ -1,0 +1,58 @@
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+
+  function getCurrentTheme() {
+    return document.querySelector("html").dataset.theme === 'dark'
+      ? 'dark'
+      : 'default';
+  }
+
+  function saveOriginalTexts() {
+    const diagrams = document.querySelectorAll('.mermaid');
+    diagrams.forEach((el) => {
+      const originalText = el.textContent.trim();
+      el.setAttribute('data-original', originalText);
+    });
+  }
+
+  async function reRenderDiagrams() {
+    const theme = getCurrentTheme();
+    mermaid.initialize({ theme, startOnLoad: false });
+
+    const diagrams = document.querySelectorAll('.mermaid');
+    diagrams.forEach((el) => {
+      el.removeAttribute('data-processed');
+      el.innerHTML = '';
+      const original = el.getAttribute('data-original');
+      if (original !== null) {
+        el.textContent = original;
+      }
+    });
+
+    await mermaid.run({
+      querySelector: '.mermaid',
+      suppressErrors: false
+    });
+  }
+
+  async function init() {
+    saveOriginalTexts();
+    await reRenderDiagrams();
+  }
+
+  function observeThemeChanges() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          reRenderDiagrams();
+        }
+      });
+    });
+    const target = document.querySelector('html');
+    if (target) {
+      observer.observe(target, { attributes: true });
+    }
+  }
+
+  init().then(() => observeThemeChanges());
+</script>
