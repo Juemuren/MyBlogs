@@ -1,15 +1,17 @@
-# 编辑器
+# Editor
 .vscode/
 
-# 导出
+# Export
 *.zhihu.md
-/public
+*-mermaid-*
+*-tikz-*
 
-# 草稿
+# Draft
 draft/
 
-# 配置
+# Hugo
 .hugo_build.lock
+/public
 
-# 环境变量
+# Env
 .env
