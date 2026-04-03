@@ -1,0 +1,4 @@
+<pre class="tikz">
+  {{ .Inner | htmlEscape | safeHTML }}
+</pre>
+{{ .Page.Store.Set "hasTikz" true }}

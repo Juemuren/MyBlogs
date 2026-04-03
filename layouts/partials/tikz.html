@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll('.tikz');
+    elements.forEach((el, index) => {
+      const script = document.createElement('script');
+      script.type = 'text/tikz';
+      script.textContent = el.textContent.trim();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'tikz-container';
+      el.parentNode.replaceChild(wrapper, el);
+      wrapper.appendChild(script);
+    });
+  })
+</script>
+<style>
+html[data-theme="dark"] .tikz-container svg {
+  filter: invert(1);
+}
+</style>
