@@ -6,9 +6,11 @@ new type name:
   hugo new content "posts/{{type}}/{{name}}.md"
 
 export-zhihu file:
-  pandoc "{{file}}" -t markdown-smart -o "{{without_extension(file)}}.zhihu.md" \
+  pandoc "{{file}}" -o "{{without_extension(file)}}.zhihu.md" \
+    -t markdown-smart-simple_tables \
     --lua-filter="scripts/extract-codeblocks.lua" \
     --lua-filter="scripts/shift-headers.lua" \
+    --lua-filter="scripts/remove-comments.lua" \
     --wrap=preserve
   ./scripts/export-svg.sh "{{parent_directory(file)}}"
 

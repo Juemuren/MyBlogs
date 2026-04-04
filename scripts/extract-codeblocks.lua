@@ -14,6 +14,7 @@ local function replace_codeblock(key, ext, content)
   return pandoc.Para({img})
 end
 
+-- Extract Codeblock into Standalone
 function CodeBlock(el)
   local class = el.classes and el.classes[1]
   if class == "tikz" then
