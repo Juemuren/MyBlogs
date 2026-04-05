@@ -4,13 +4,39 @@
   document.addEventListener("DOMContentLoaded", function() {
     const elements = document.querySelectorAll('.tikz');
     elements.forEach((el, index) => {
-      const script = document.createElement('script');
-      script.type = 'text/tikz';
-      script.textContent = el.textContent.trim();
       const wrapper = document.createElement('div');
       wrapper.className = 'tikz-container';
       el.parentNode.replaceChild(wrapper, el);
+
+      const script = document.createElement('script');
+      script.type = 'text/tikz';
+      script.textContent = el.textContent.trim();
       wrapper.appendChild(script);
+
+      const status = document.createElement('div');
+      status.style.color = 'gray';
+      status.innerHTML = '正在渲染';
+      wrapper.appendChild(status);
+      const observer = new MutationObserver((mutations) => {
+        for (let mutation of mutations) {
+          if (mutation.addedNodes.length > 0) {
+            for (let node of mutation.addedNodes) {
+              if (node.tagName && node.tagName.toLowerCase() === 'div' && node.querySelector('svg')) {
+                status.style.display = 'none';
+                observer.disconnect();
+              }
+            }
+          }
+        }
+      });
+      observer.observe(wrapper, { childList: true });
+      window.addEventListener('unhandledrejection', function(event) {
+        if (status.style.display !== 'none') {
+          status.style.color = 'red'
+          status.innerHTML = '渲染失败';
+          observer.disconnect();
+        }
+      });
     });
   })
 </script>
