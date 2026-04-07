@@ -52,6 +52,9 @@ languages:
         - name: 归档
           url: /archives
           weight: 6
+        - name: 关于
+          url: /about
+          weight: 7
 
 params:
   env: production
@@ -76,10 +79,8 @@ params:
     buttons:
       - name: 合集
         url: posts
-      - name: 类别
-        url: categories
-      - name: 标签
-        url: tags
+      - name: 关于
+        url: about
       - name: 仓库
         url: https://github.com/juemuren/MyBlogs
 
