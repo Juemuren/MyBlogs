@@ -19,10 +19,11 @@ export-zhihu file:
   pandoc "{{file}}" -o "{{without_extension(file)}}.zhihu.md" \
     --standalone \
     --from markdown \
-    --to markdown-smart-simple_tables \
+    --to markdown-smart-simple_tables-raw_attribute \
     --lua-filter="scripts/extract-codeblocks.lua" \
     --lua-filter="scripts/shift-headers.lua" \
     --lua-filter="scripts/remove-comments.lua" \
+    # --lua-filter="scripts/convert-math.lua" \
     --wrap=preserve
   ./scripts/export-svg.sh "{{parent_directory(file)}}"
 
