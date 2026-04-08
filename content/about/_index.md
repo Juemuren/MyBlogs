@@ -62,10 +62,14 @@ layout: about
 另外在此列出其它我写作时会用到的工具
 
 - VSCode 插件
+  - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
   - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+  - [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
+  - [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
   - [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable)
   - [Markdown Word Count](https://marketplace.visualstudio.com/items?itemName=CurlyBrackets.markdown-word-count)
   - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+  - [Mermaid Markdown Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=bpruitt-goddard.mermaid-markdown-syntax-highlighting)
   - [TikZ in Markdown](https://marketplace.visualstudio.com/items?itemName=kevinyuan.vscode-tikzjax)
   - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - CLI 工具
