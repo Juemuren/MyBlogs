@@ -1,5 +1,5 @@
 baseURL: https://juemuren.github.io/MyBlogs
-languageCode: zh-cn
+locale: zh-cn
 title: 无限能指
 theme: PaperMod
 mainSections: ["posts"]
@@ -31,7 +31,7 @@ caches:
 
 languages:
   zh:
-    languageName: 简体中文
+    label: 简体中文
     menu:
       main:
         - name: 主页
