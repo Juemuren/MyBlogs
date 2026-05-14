@@ -1,9 +1,37 @@
-<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
-<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+<link rel="stylesheet" type="text/css"
+  href="https://cdn.jsdelivr.net/npm/@drgrice1/tikzjax@1.0.0-beta24/dist/fonts.css"
+>
+<script defer src="https://cdn.jsdelivr.net/npm/@drgrice1/tikzjax@1.0.0-beta24/dist/tikzjax.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll('.tikz');
-    elements.forEach((el, index) => {
+    const pending = new Set();
+    function finishRender(item, ok, message) {
+      if (item.done) {
+        return;
+      }
+
+      item.done = true;
+      pending.delete(item);
+      item.observer.disconnect();
+
+      if (ok) {
+        item.status.style.display = 'none';
+        return;
+      }
+
+      item.status.style.color = 'red';
+      item.status.textContent = message || '渲染失败';
+    }
+
+    function failPending() {
+      pending.forEach((item) => finishRender(item, false));
+    }
+
+    window.addEventListener('error', failPending, true);
+    window.addEventListener('unhandledrejection', failPending);
+
+    elements.forEach((el) => {
       const wrapper = document.createElement('div');
       wrapper.className = 'tikz-container';
       el.parentNode.replaceChild(wrapper, el);
@@ -15,28 +43,26 @@
 
       const status = document.createElement('div');
       status.style.color = 'gray';
-      status.innerHTML = '正在渲染';
+      status.textContent = '正在渲染';
       wrapper.appendChild(status);
-      const observer = new MutationObserver((mutations) => {
-        for (let mutation of mutations) {
-          if (mutation.addedNodes.length > 0) {
-            for (let node of mutation.addedNodes) {
-              if (node.tagName && node.tagName.toLowerCase() === 'div' && node.querySelector('svg')) {
-                status.style.display = 'none';
-                observer.disconnect();
-              }
-            }
-          }
+
+      const item = {
+        wrapper,
+        status,
+        done: false,
+        observer: null,
+      };
+
+      function checkRendered() {
+        if (wrapper.querySelector('svg')) {
+          finishRender(item, true);
         }
-      });
-      observer.observe(wrapper, { childList: true });
-      window.addEventListener('unhandledrejection', function(event) {
-        if (status.style.display !== 'none') {
-          status.style.color = 'red'
-          status.innerHTML = '渲染失败';
-          observer.disconnect();
-        }
-      });
+      }
+
+      item.observer = new MutationObserver(checkRendered);
+      item.observer.observe(wrapper, { childList: true, subtree: true });
+
+      pending.add(item);
     });
   })
 </script>
