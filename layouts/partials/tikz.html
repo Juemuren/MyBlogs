@@ -5,64 +5,14 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll('.tikz');
-    const pending = new Set();
-    function finishRender(item, ok, message) {
-      if (item.done) {
-        return;
-      }
-
-      item.done = true;
-      pending.delete(item);
-      item.observer.disconnect();
-
-      if (ok) {
-        item.status.style.display = 'none';
-        return;
-      }
-
-      item.status.style.color = 'red';
-      item.status.textContent = message || '渲染失败';
-    }
-
-    function failPending() {
-      pending.forEach((item) => finishRender(item, false));
-    }
-
-    window.addEventListener('error', failPending, true);
-    window.addEventListener('unhandledrejection', failPending);
-
-    elements.forEach((el) => {
+    elements.forEach(el => {
       const wrapper = document.createElement('div');
       wrapper.className = 'tikz-container';
       el.parentNode.replaceChild(wrapper, el);
-
       const script = document.createElement('script');
       script.type = 'text/tikz';
       script.textContent = el.textContent.trim();
       wrapper.appendChild(script);
-
-      const status = document.createElement('div');
-      status.style.color = 'gray';
-      status.textContent = '正在渲染';
-      wrapper.appendChild(status);
-
-      const item = {
-        wrapper,
-        status,
-        done: false,
-        observer: null,
-      };
-
-      function checkRendered() {
-        if (wrapper.querySelector('svg')) {
-          finishRender(item, true);
-        }
-      }
-
-      item.observer = new MutationObserver(checkRendered);
-      item.observer.observe(wrapper, { childList: true, subtree: true });
-
-      pending.add(item);
     });
   })
 </script>
