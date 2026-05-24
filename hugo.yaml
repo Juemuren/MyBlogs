@@ -1,4 +1,4 @@
-baseURL: https://juemuren.github.io/MyBlogs
+baseURL: https://juemuren.github.io/blog
 locale: zh-cn
 title: 无限能指
 theme: PaperMod
@@ -82,7 +82,7 @@ params:
       - name: 关于
         url: about
       - name: 仓库
-        url: https://github.com/juemuren/MyBlogs
+        url: https://github.com/juemuren/blog
 
   socialIcons:
     - name: github
