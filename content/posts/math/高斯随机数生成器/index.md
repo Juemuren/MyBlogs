@@ -30,7 +30,7 @@ $$
 f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}
 $$
 
-二维正态分布与一维的类似。设 $X, Y \stackrel{\text{i.i.d.}}{\sim} N(0,1)$，则其联合概率密度函数为
+二维正态分布与一维的类似。设 $X, Y \stackrel{\text{i.i.d.}}{\sim} \mathcal{N}(0,1)$，则其联合概率密度函数为
 
 $$
 f_{X,Y}(x,y) = \frac{1}{2\pi} e^{-\frac{x^2+y^2}{2}} \quad (x,y)\in\mathbb{R}^2
@@ -113,7 +113,7 @@ $$
 计算 $R$ 的边缘密度
 
 $$
-f_R(r) = \int_0^{2\pi} f_{R,\Theta}(r,\theta) \mathrm{d}\theta = r e^{-r^2/2} \quad r\ge 0
+f_R(r) = \int_0^{2\pi} f_{R,\Theta}(r,\theta) \mathrm{d}\theta = r e^{-\frac{r^2}{2}} \quad r\ge 0
 $$
 
 如果缺乏注意力的话，这里不太能够直接看出 $R$ 的分布。但这个概率密度函数和指数分布的 $f_X(x)=\lambda e^{-\lambda x}$ 有点相似，因此接下来再对 $R$ 进行换元。
@@ -123,9 +123,9 @@ $$
 $$
 \begin{align*}
   f_S(s) &= f_R(r(s)) \left| \frac{\mathrm{d}r(s)}{\mathrm{d}s} \right| \\
-  &= f_R(\sqrt{s}) \left| \frac{d\sqrt{s}}{ds} \right| \\
-  &= \sqrt{s} e^{-s/2} \frac{1}{2\sqrt{s}} \\
-  &= \frac{1}{2} e^{-s/2}
+  &= f_R(\sqrt{s}) \left| \frac{\mathrm{d}\sqrt{s}}{\mathrm{d}s} \right| \\
+  &= \sqrt{s} e^{-\frac{s}{2}} \frac{1}{2\sqrt{s}} \\
+  &= \frac{1}{2} e^{-\frac{s}{2}}
 \end{align*}
 $$
 
@@ -141,37 +141,37 @@ $$
 Y=F_Y^{-1}(F_X(X))
 $$
 
-由于我们要将均匀随机变量变为指数随机变量，因此 $F_X$ 就是 $U(0,1)$ 的累积分布函数，即
+源分布是均匀分布 $U(0,1)$，其累积分布函数相当简单
 
 $$
 F_X(x)=x
 $$
 
-所以这里只需计算指数分布的累积分布函数 $F_S$ ，然后再求反函数 $F_S^{-1}$ 即可。
+所以之后只需计算指数分布的累积分布函数 $F_S$ ，然后再求反函数 $F_S^{-1}$ 即可。
 
 对于 $\text{Exp}(1/2)$，其累积分布函数为
 
 $$
 \begin{align*}
   F_S(s) &= \int_0^{s} f_S(s) \mathrm{d}s \\
-  &= \int_0^{s} \frac{1}{2} e^{-s/2} \mathrm{d}s \\
-  &= [-e^{-t/2}]_0^s \\
-  &= 1 - e^{-s/2}
+  &= \int_0^{s} \frac{1}{2} e^{-\frac{s}{2}} \mathrm{d}s \\
+  &= [-e^{-\frac{t}{2}}]_0^s \\
+  &= 1 - e^{-\frac{s}{2}}
 \end{align*}
 $$
 
 即
 
 $$
-F_S(s) = 1 - e^{-s/2} \quad s\ge 0
+F_S(s) = 1 - e^{-\frac{s}{2}} \quad s\ge 0
 $$
 
 推导其反函数
 
 $$
 \begin{align*}
-  e^{-s/2} &= 1 - F_S \\
-  -s/2 &= \ln(1 - F_S) \\
+  e^{-\frac{s}{2}} &= 1 - F_S \\
+  -\frac{s}{2} &= \ln(1 - F_S) \\
   s &= -2\ln(1 - F_S)
 \end{align*}
 $$
@@ -179,7 +179,7 @@ $$
 即
 
 $$
-F_S^{-1}(t)=-2\ln(1-t)
+F_S^{-1}(u)=-2\ln(1-u) \quad u\in[0,1)
 $$
 
 设 $U_1 \sim U(0,1)$，于是有
@@ -194,24 +194,31 @@ $$
 S = -2\ln U_1
 $$
 
-而之前已经得到 $\Theta \sim U(0,2\pi)$。若设 $U_2 \sim U(0,1)$，则
+而之前已经得到 $\Theta \sim U(0,2\pi)$。设 $U_2 \sim U(0,1)$，则
 
 $$
 \Theta = 2\pi U_2
 $$
 
-最终结果为
+于是
 
 $$
 \begin{cases}
   R = \sqrt{S} = \sqrt{-2\ln U_1} \\
-  \Theta = 2\pi U_2 \\
+  \Theta = 2\pi U_2
+\end{cases}
+$$
+
+带入
+
+$$
+\begin{cases}
   X = R\cos\Theta \\
   Y = R\sin\Theta
 \end{cases}
 $$
 
-即
+得到最终结果
 
 $$
 X = \sqrt{-2\ln U_1}\cos(2\pi U_2) \\
@@ -253,7 +260,7 @@ function createGaussianRandomGenerator(seed) {
     while (u_1 === 0) {
       u_1 = getUniformRandom();
     }
-    let u_2 = getUniformRandom();
+    const u_2 = getUniformRandom();
 
     const r = Math.sqrt(-2 * Math.log(u_1));
     const theta = 2 * Math.PI * u_2;
