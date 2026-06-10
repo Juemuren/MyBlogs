@@ -1,3 +1,6 @@
+# https://gohugo.io/configuration/
+# https://github.com/adityatelange/hugo-PaperMod/wiki
+
 baseURL: https://juemuren.github.io/blog
 locale: zh-cn
 title: 无限能指
@@ -60,6 +63,7 @@ params:
   env: production
   showToc: true
   tocOpen: true
+  showCodeCopyButtons: true
   showWordCount: true
   showReadingTime: true
   hideFooter: true
