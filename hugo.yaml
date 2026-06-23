@@ -4,6 +4,7 @@
 baseURL: https://juemuren.github.io/blog
 locale: zh-cn
 title: 无限能指
+copyright: "&copy; 2025-2026 **[Raind](https://github.com/Juemuren)**"
 theme: PaperMod
 mainSections: ["posts"]
 
@@ -63,10 +64,11 @@ params:
   env: production
   showToc: true
   tocOpen: true
+  showFullTextinRSS: true
   showCodeCopyButtons: true
   showWordCount: true
   showReadingTime: true
-  hideFooter: true
+  hideFooter: false
 
   author: 冯玉
   assets:
