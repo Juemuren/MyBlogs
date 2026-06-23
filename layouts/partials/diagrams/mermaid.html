@@ -4,7 +4,7 @@
   function getCurrentTheme() {
     return document.querySelector("html").dataset.theme === 'dark'
       ? 'dark'
-      : 'default';
+      : 'neutral';
   }
 
   function saveOriginalTexts() {
@@ -15,10 +15,7 @@
     });
   }
 
-  async function reRenderDiagrams() {
-    const theme = getCurrentTheme();
-    mermaid.initialize({ theme, startOnLoad: false });
-
+  function loadOriginalTexts() {
     const diagrams = document.querySelectorAll('.mermaid');
     diagrams.forEach((el) => {
       el.removeAttribute('data-processed');
@@ -28,6 +25,13 @@
         el.textContent = original;
       }
     });
+  }
+
+  async function renderDiagrams() {
+    const theme = getCurrentTheme();
+    mermaid.initialize({ theme, startOnLoad: false });
+
+    loadOriginalTexts()
 
     await mermaid.run({
       querySelector: '.mermaid',
@@ -37,14 +41,14 @@
 
   async function init() {
     saveOriginalTexts();
-    await reRenderDiagrams();
+    await renderDiagrams();
   }
 
   function observeThemeChanges() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'data-theme') {
-          reRenderDiagrams();
+          renderDiagrams();
         }
       });
     });

@@ -3,9 +3,9 @@
 {{ end }}
 
 {{ if .Store.Get "hasTikz" }}
-{{ partial "tikz.html" . }}
+{{ partial "diagrams/tikz.html" . }}
 {{ end }}
 
 {{ if .Store.Get "hasMermaid" }}
-{{ partial "mermaid.html" . }}
+{{ partial "diagrams/mermaid.html" . }}
 {{ end }}
