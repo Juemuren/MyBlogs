@@ -66,11 +66,15 @@ params:
   tocOpen: true
   showFullTextinRSS: true
   showCodeCopyButtons: true
+  showShareButtons: true
+  showBreadCrumbs: false
+  showPostNavLinks: true
   showWordCount: true
   showReadingTime: true
   hideFooter: false
 
   author: 冯玉
+  description: 冯玉的个人博客
   assets:
     favicon: favicon.svg
 

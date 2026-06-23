@@ -4,6 +4,7 @@ date: 2026-06-10
 math: true
 categories: 数学
 tags: ["均匀分布", "正态分布", "指数分布"]
+summary: 用极坐标变换推导 Box-Muller 算法，并给出一个 JavaScript 实现。
 ---
 
 Box-Muller 算法可以把独立的均匀分布随机数变换为独立的正态分布随机数，其基本形式如下
