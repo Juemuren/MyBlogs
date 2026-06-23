@@ -23,11 +23,19 @@ markup:
             - $
         enable: true
 
+outputFormats:
+  llms:
+    baseName: llms
+    isPlainText: true
+    mediaType: text/plain
+
 outputs:
   home:
     - HTML
     - RSS
     - JSON
+    - ROBOTS
+    - LLMS
 
 caches:
   images:
