@@ -11,6 +11,7 @@ draft/
 
 # Hugo
 .hugo_build.lock
+.hugo_cache/
 /public
 
 # Env

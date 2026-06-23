@@ -1,0 +1,15 @@
+{{- $displayMode := eq .Type "block" -}}
+{{- $opts := dict "output" "htmlAndMathml" "displayMode" $displayMode "throwOnError" false -}}
+{{- with try (transform.ToMath .Inner $opts) -}}
+  {{- with .Err -}}
+    {{- warnf "Unable to render math at %s: %s" $.Position . -}}
+    {{- .Inner | htmlEscape | safeHTML -}}
+  {{- else -}}
+    {{- $.Page.Store.Set "hasMath" true -}}
+    {{- if $displayMode -}}
+      <div class="math-scroll">{{ .Value }}</div>
+    {{- else -}}
+      {{- .Value -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
