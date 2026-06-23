@@ -305,6 +305,6 @@ for (let i = 0; i < COUNT; i++) console.log(g())
 
 本文选择给出 JavaScript 实现，其实还有一个好处：每个能浏览网页的设备，事实上都有 JavaScript 的运行环境。对于桌面端，只需在浏览器里按下 `F12` 打开 `DevTools`，然后找到[控制台（Console）面板](https://developer.chrome.google.cn/docs/devtools/overview?hl=zh-cn#console)，再把上面的两段代码复制进去就能运行了
 
-![gaussian-random-generator](./gaussian-random-generator.png)
+![浏览器控制台截图](./浏览器控制台截图.png)
 
 移动端的话没法打开 `DevTools`，可以到能够在线运行 JavaScript 的网站上尝试。
