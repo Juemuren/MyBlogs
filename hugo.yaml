@@ -37,6 +37,10 @@ outputs:
     - ROBOTS
     - LLMS
 
+services:
+  rss:
+    limit: -1
+
 caches:
   images:
     dir: :cacheDir/images
@@ -72,7 +76,7 @@ params:
   env: production
   showToc: true
   tocOpen: true
-  showFullTextinRSS: true
+  showFullTextinRSS: false
   showCodeCopyButtons: true
   showShareButtons: true
   showBreadCrumbs: false
