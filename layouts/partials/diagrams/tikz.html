@@ -1,7 +1,13 @@
-<link rel="stylesheet" type="text/css"
+<link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@drgrice1/tikzjax@1.0.0-beta24/dist/fonts.css"
+  integrity="sha384-PbIsOsezZZmSgWhxv4UD3TQAV15oHGgZd/5NYY20c3YdHkFAJx7Ye3Mgnv1KHxBl"
+  crossorigin="anonymous"
 >
-<script defer src="https://cdn.jsdelivr.net/npm/@drgrice1/tikzjax@1.0.0-beta24/dist/tikzjax.js"></script>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/@drgrice1/tikzjax@1.0.0-beta24/dist/tikzjax.js"
+  integrity="sha384-noUV/PegiCqC0SabPZ4t6tyU3kEAuC2UHPfaf1/un55taPy/CZlvJYS3MubK12IT"
+  crossorigin="anonymous">
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const elements = document.querySelectorAll('.tikz');
@@ -25,6 +31,6 @@
   overflow-y: hidden;
 }
 html[data-theme="dark"] .tikz-container svg {
-  filter: invert(1);
+  filter: invert(1) hue-rotate(180deg);
 }
 </style>
