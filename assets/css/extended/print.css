@@ -1,0 +1,146 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+    background: inherit;
+  }
+
+  .header,
+  .footer,
+  .top-link,
+  .breadcrumbs,
+  .post-meta,
+  .post-footer,
+  .post-tags,
+  .share-buttons,
+  .paginav,
+  .comments {
+    display: none !important;
+  }
+
+  .post-content h2 {
+    break-before: page;
+  }
+  .footnotes {
+    break-before: page;
+    break-after: avoid-page;
+  }
+  .post-content h2,
+  .post-content h3 {
+    break-after: avoid-page;
+  }
+  .post-content table,
+  .post-content pre,
+  .post-content img {
+    break-inside: avoid-page;
+  }
+
+  #top {
+    line-break: strict;
+    hanging-punctuation: first allow-end;
+  }
+  .post-title, 
+  .post-content h2,
+  .toc summary {
+    display: block !important;
+    text-align: center;
+  }
+  .post-content {
+    text-align: justify;
+    text-justify: inter-ideograph;
+    letter-spacing: 0;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    hyphens: none;
+  }
+  .post-content > p {
+    text-indent: 2em !important;
+  }
+
+  #top,
+  .toc,
+  .post-content pre {
+    border: none !important;
+    background: none !important;
+  }
+  .toc summary {
+    list-style: none;
+  }
+  .post-content h2 > a,
+  .post-content h3 > a,
+  .post-content h4 > a,
+  .post-content h5 > a,
+  .post-content h6 > a,
+  .footnotes hr {
+    display: none;
+  }
+
+  .main,
+  .post-header,
+  .post-content,
+  .footnotes ol {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .post-title {
+    margin: 2em 0 2em !important;
+  }
+
+  .toc summary {
+    margin: 0 0 1em !important;
+  }
+  .toc .title {
+    font-size: 24pt;
+    font-weight: bolder;
+  }
+  .toc .inner {
+    font-size: 12pt;
+    line-height: 2;
+  }
+
+  .post-content {
+    font-size: 12pt;
+    line-height: 1.75;
+  }
+  .post-content > p {
+    margin: 0 0 0.75em !important;
+  }
+  .post-content > blockquote {
+    margin: 0 0 1em !important;
+  }
+  .post-content > ul,
+  .post-content > ol {
+    margin: 0 0 0.75em 2em !important;
+  }
+  .post-content li {
+    margin: 0.15em 0 !important;
+  }
+  .post-content table {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  .post-content pre,
+  .post-content code {
+    font-size: 10pt;
+    line-height: 1.5;
+    white-space: pre-wrap !important;
+    border-radius: 0 !important;
+  }
+  .post-content img {
+    border-radius: 0;
+  }
+  .post-content a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    opacity: 0.75;
+  }
+
+  .footnotes ol {
+    list-style-position: inside;
+  }
+  .footnotes ol li > p:first-child {
+    display: inline;
+  }
+}
