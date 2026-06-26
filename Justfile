@@ -10,6 +10,7 @@ new type name:
 check:
     typos content
     autocorrect content --lint
+    rumdl check content
 publish-zhihu file: (export-zhihu file)
     source .env && \
     wechatsync sync "{{ without_extension(file) }}.zhihu.md" -p zhihu

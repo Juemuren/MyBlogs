@@ -238,7 +238,7 @@ $$
 
 ## 代码实现
 
-由于我就是在[最近做的一个 Web 项目](https://github.com/juemuren/piano-lab/)中用到了 Box-Muller 算法（这也是写本文的原因），因此这里给出该算法的 JavaScript 实现。
+由于我就是在 [最近做的一个 Web 项目](https://github.com/juemuren/piano-lab/)中用到了 Box-Muller 算法（这也是写本文的原因），因此这里给出该算法的 JavaScript 实现。
 
 > 其实 JavaScript 的 `Math.random()` 能够生成 $U(0,1)$ 随机数，但该方法不允许设置种子，导致缺少很多乐趣，所以我这里先实现了一个基于线性同余的均匀随机数生成器。
 
