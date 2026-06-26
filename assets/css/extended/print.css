@@ -74,6 +74,10 @@
   .footnotes hr {
     display: none;
   }
+  .tikz-container,
+  .math-container {
+    overflow-x: clip !important;
+  }
 
   .main,
   .post-header,

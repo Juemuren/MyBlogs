@@ -7,7 +7,7 @@
   {{- else -}}
     {{- $.Page.Store.Set "hasMath" true -}}
     {{- if $displayMode -}}
-      <div class="math-scroll">{{ .Value }}</div>
+      <div class="math-container">{{ .Value }}</div>
     {{- else -}}
       {{- .Value -}}
     {{- end -}}
