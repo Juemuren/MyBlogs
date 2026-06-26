@@ -1,0 +1,23 @@
+[files]
+extend-exclude = []
+ignore-hidden = true
+ignore-files = true
+ignore-dot = true
+ignore-vcs = true
+ignore-global = true
+ignore-parent = true
+
+[default]
+binary = false
+check-filename = true
+check-file = true
+unicode = true
+locale = "en-us"
+extend-ignore-re = []
+extend-ignore-identifiers-re = []
+extend-ignore-words-re = []
+
+[default.extend-words]
+Hom = "Hom"
+
+[default.extend-identifiers]

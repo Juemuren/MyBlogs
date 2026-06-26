@@ -7,6 +7,9 @@ build: clean-zhihu
     hugo --cleanDestinationDir
 new type name:
     hugo new content "posts/{{ type }}/{{ name }}.md"
+check:
+    typos content
+    autocorrect content --lint
 publish-zhihu file: (export-zhihu file)
     source .env && \
     wechatsync sync "{{ without_extension(file) }}.zhihu.md" -p zhihu
