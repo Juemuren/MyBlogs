@@ -1,0 +1,18 @@
+<script defer
+  src="https://cdn.jsdelivr.net/npm/abcjs@6.6.3/dist/abcjs-basic-min.min.js"
+  integrity="sha384-1NMuKXmc3uoL9DgYl4xk4m3wh/VSSJ1jKVsNjFu882heXeNSw4jT87kw5VCA7ELC"
+  crossorigin="anonymous">
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".abc");
+  elements.forEach(function (el) {
+    const abc = el.textContent.trim();
+    ABCJS.renderAbc(el, abc, {
+      responsive: "resize",
+      selectTypes: false,
+      oneSvgPerLine: true,
+    });
+  });
+});
+</script>

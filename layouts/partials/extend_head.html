@@ -9,3 +9,7 @@
 {{ if .Store.Get "hasMermaid" }}
 {{ partial "diagrams/mermaid.html" . }}
 {{ end }}
+
+{{ if .Store.Get "hasAbc" }}
+{{ partial "diagrams/abc.html" . }}
+{{ end }}
