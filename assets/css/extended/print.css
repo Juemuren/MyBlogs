@@ -141,6 +141,12 @@
     opacity: 0.75;
   }
 
+  .post-content sup:has(.footnote-ref) {
+    line-height: 0;
+  }
+  .footnote-ref {
+    text-underline-offset: 0.15rem !important;
+  }
   .footnotes ol {
     list-style-position: inside;
   }
