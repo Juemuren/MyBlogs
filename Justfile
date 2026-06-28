@@ -11,6 +11,7 @@ check:
     typos content
     autocorrect content --lint
     rumdl check content
+    cspell lint content
 publish-zhihu file: (export-zhihu file)
     source .env && \
     wechatsync sync "{{ without_extension(file) }}.zhihu.md" -p zhihu

@@ -76,7 +76,7 @@ params:
   env: production
   showToc: true
   tocOpen: true
-  showFullTextinRSS: false
+  showFullTextInRSS: false
   showCodeCopyButtons: true
   showShareButtons: true
   showBreadCrumbs: false
