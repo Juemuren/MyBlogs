@@ -8,13 +8,17 @@ build: clean-zhihu
 new type name:
     hugo new content "posts/{{ type }}/{{ name }}.md"
 check:
-    typos content
     autocorrect content --lint
     rumdl check content
+spell-check:
+    typos content
     cspell lint content
+    # ltex-cli-plus --client-configuration .ltex.json content
+sort-dictionary:
+    ./scripts/sort-dictionary.sh .cspell
+    ./scripts/sort-dictionary.sh .ltex
 publish-zhihu file: (export-zhihu file)
-    source .env && \
-    wechatsync sync "{{ without_extension(file) }}.zhihu.md" -p zhihu
+    ./scripts/publish-zhihu.sh "{{ without_extension(file) }}.zhihu.md"
 export-zhihu file:
     ./scripts/handle-md.sh "{{ file }}" "{{ without_extension(file) }}.zhihu.md"
     ./scripts/export-svg.sh "{{ parent_directory(file) }}"
