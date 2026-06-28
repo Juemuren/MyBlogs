@@ -1,12 +1,14 @@
 [default]
 default:
     just --list
-server: clean-zhihu
+server: clean
     hugo server
-build: clean-zhihu
+build: clean
     hugo --cleanDestinationDir
 new type name:
     hugo new content "posts/{{ type }}/{{ name }}.md"
+clean:
+    ./scripts/clean.sh
 check:
     autocorrect content --lint
     rumdl check content
@@ -17,14 +19,10 @@ spell-check:
 sort-dictionary:
     ./scripts/sort-dictionary.sh .cspell
     ./scripts/sort-dictionary.sh .ltex
-publish-zhihu file: (export-zhihu file)
-    ./scripts/publish-zhihu.sh "{{ without_extension(file) }}.zhihu.md"
-export-zhihu file:
-    ./scripts/handle-md.sh "{{ file }}" "{{ without_extension(file) }}.zhihu.md"
+publish-zhihu file: (export-standalone file)
+    ./scripts/publish-zhihu.sh "{{ without_extension(file) }}.temp.md"
+export-standalone file:
+    ./scripts/handle-md.sh "{{ file }}" "{{ without_extension(file) }}.temp.md"
     ./scripts/export-svg.sh "{{ parent_directory(file) }}"
-clean-zhihu:
-    fd --no-ignore-vcs \
-        --type file ".*\.zhihu\.md|.*-(tikz|mermaid)-.*" \
-        --exec-batch rm
 delete-deployments:
     ./scripts/delete-deployments.sh

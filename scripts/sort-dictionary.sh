@@ -2,4 +2,4 @@
 
 path=$1
 
-fd --search-path "$path" --exec sh -c "sort {} --output {}"
+fd --search-path "$path" --exec "$(command -v sort)" {} --output {}

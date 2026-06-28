@@ -2,7 +2,7 @@
 .vscode/
 
 # Export
-*.zhihu.md
+*.temp.md
 *-mermaid-*
 *-tikz-*
 
