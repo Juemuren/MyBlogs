@@ -28,3 +28,4 @@ useGitignore: true
 ignorePaths:
   - themes
   - .cspell
+  - .ltex

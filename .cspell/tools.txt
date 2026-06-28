@@ -1,4 +1,5 @@
 dvisvgm
+ltex
 mmdc
 pandoc
 rumdl

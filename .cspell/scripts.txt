@@ -1,3 +1,5 @@
 eeimg
+fullwidth
+halfwidth
 mathtype
 noresize
