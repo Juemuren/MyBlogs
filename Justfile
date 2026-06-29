@@ -5,10 +5,10 @@ server: clean
     hugo server
 build: clean
     hugo --cleanDestinationDir
-new type name:
-    hugo new content "posts/{{ type }}/{{ name }}.md"
+new:
+    ./scripts/new-content.sh
 clean:
-    ./scripts/clean.sh
+    ./scripts/clean-temp.sh
 check:
     autocorrect content --lint
     rumdl check content
