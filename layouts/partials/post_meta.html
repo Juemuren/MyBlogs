@@ -7,6 +7,11 @@
 {{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat)))) }}
 {{- end }}
 
+{{- if and (not .Lastmod.IsZero) (ne (.Date | time.Format "2006-01-02") (.Lastmod | time.Format "2006-01-02")) -}}
+{{- $lastmodText := i18n "lastmod" (.Lastmod | time.Format (default ":date_long" site.Params.DateFormat)) -}}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Lastmod) $lastmodText)) }}
+{{- end }}
+
 {{- if (.Param "ShowReadingTime") -}}
 {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" $readingTime | default (printf "%d min" $readingTime)))) }}
 {{- end }}
