@@ -8,6 +8,7 @@ copyright: "&copy; Copyright 2026, **[Raind](https://github.com/Juemuren)**"
 theme: PaperMod
 mainSections: ["posts"]
 
+hasCJKLanguage: true
 enableGitInfo: true
 googleAnalytics: G-79T7Y2J3Z6
 
