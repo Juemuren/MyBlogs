@@ -1,4 +1,5 @@
 dvisvgm
+Justfile
 ltex
 mmdc
 pandoc
