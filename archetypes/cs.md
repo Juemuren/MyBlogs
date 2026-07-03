@@ -1,7 +1,7 @@
 ---
 title: {{ getenv `HUGO_TITLE` }}
 date: {{ .Date }}
-categories: {{ getenv `HUGO_CATEGORY` }}
+categories: 计算机
 {{- with getenv `HUGO_TAGS` }}
 tags:
 {{ . }}

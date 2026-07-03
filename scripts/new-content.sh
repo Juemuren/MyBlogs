@@ -6,33 +6,29 @@ gum style \
   --padding "0 1" \
   "Create new content"
 
-category=$(
+kind=$(
   gum choose \
-    --header "Category" \
+    --header "Kind" \
+    "art" \
+    "cs" \
     "math" \
-    "lit" \
+    "nov" \
     "phil"
 )
 title=$(
   gum input \
     --prompt "Title: " \
-    --placeholder "New $category post"
+    --placeholder "New $kind post"
 )
 tags=$(
   gum input \
     --prompt "Tags: " \
-    --placeholder "$category, $title"
+    --placeholder "$kind, $title"
 )
 summary=$(
   gum write \
-    --header "$category - [$title]: $tags" \
+    --header "$kind - [$title]: $tags" \
     --placeholder "Summary"
-)
-draft=$(
-  gum choose \
-    --header "Draft?" \
-    true \
-    false
 )
 
 yaml_list_from_csv_line() {
@@ -41,14 +37,12 @@ yaml_list_from_csv_line() {
   sed 's/^/  /'
 }
 
-path="posts/${category}/${title}.md"
+path="posts/${kind}/${title}.md"
 
 HUGO_TITLE="$title" \
-HUGO_CATEGORY="$category" \
 HUGO_SUMMARY="$summary" \
 HUGO_TAGS="$(yaml_list_from_csv_line "$tags")" \
-HUGO_DRAFT="$draft" \
-hugo new content "$path"
+hugo new content --kind "$kind" "$path"
 
 if gum confirm "Open in $EDITOR?"; then
   $EDITOR "content/${path}"
