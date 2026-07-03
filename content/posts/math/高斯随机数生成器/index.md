@@ -3,7 +3,12 @@ title: 高斯随机数生成器：Box-Muller 变换的数学证明和代码实�
 date: 2026-06-10
 math: true
 categories: 数学
-tags: ["均匀分布", "正态分布", "指数分布"]
+tags:
+  - 均匀分布
+  - 正态分布
+  - 指数分布
+  - 概率积分变换
+  - 逆变换采样
 summary: 用极坐标变换推导 Box-Muller 算法，并给出一个 JavaScript 实现。
 ---
 
