@@ -1,3 +1,4 @@
+dpkg
 dvisvgm
 Justfile
 ltex

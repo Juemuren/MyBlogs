@@ -3,3 +3,4 @@ fullwidth
 halfwidth
 mathtype
 noresize
+quotepath
