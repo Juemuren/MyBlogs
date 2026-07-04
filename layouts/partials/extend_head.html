@@ -1,4 +1,4 @@
-{{ if or (.Store.Get "hasMath") .Params.math .Site.Params.math }}
+{{ if .Store.Get "hasMath" }}
 {{ partial "diagrams/math.html" . }}
 {{ end }}
 

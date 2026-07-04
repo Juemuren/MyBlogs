@@ -1,7 +1,6 @@
 ---
 title: 高斯随机数生成器：Box-Muller 变换的数学证明和代码实现
 date: 2026-06-10
-math: true
 categories: 数学
 tags:
   - 均匀分布
