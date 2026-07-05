@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "yzhang.markdown-all-in-one",
-    "rvben.rumdl",
+    "DavidAnson.vscode-markdownlint",
     "streetsidesoftware.code-spell-checker",
     "tekumara.typos-vscode",
     "huacnlee.autocorrect",
