@@ -1,7 +1,10 @@
+coreutils
 dpkg
 dvisvgm
 Justfile
 ltex
+Markmap
+miktex
 mmdc
 pandoc
 rumdl
