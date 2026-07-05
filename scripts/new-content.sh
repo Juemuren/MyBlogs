@@ -43,10 +43,6 @@ kind_from_category() {
   esac
 }
 
-trans_zh_to_en() {
-  trans -brief -engine bing zh:en "$1"
-}
-
 yaml_list_from_csv_line() {
   printf "%s\n" "$1" |
   yq 'split(",") | map(trim)' - |
@@ -57,7 +53,6 @@ kind=$(kind_from_category "$category")
 path="posts/${kind}/${title}.md"
 
 HUGO_TITLE="$title" \
-HUGO_SLUG="$(trans_zh_to_en "$title")" \
 HUGO_CATEGORY="$category" \
 HUGO_TAGS="$(yaml_list_from_csv_line "$tags")" \
 HUGO_SUMMARY="$summary" \
