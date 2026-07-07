@@ -87,6 +87,11 @@ params:
   showReadingTime: true
   hideFooter: false
 
+  editPost:
+    URL: "https://github.com/Juemuren/blog/tree/main/content"
+    Text: "原始文档"
+    appendFilePath: true
+
   author: 冯玉
   description: 冯玉的个人博客
   assets:
