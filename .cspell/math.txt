@@ -12,4 +12,5 @@ mathsf
 operatorname
 overrightarrow
 stackrel
+textcolor
 vmatrix
