@@ -1,3 +1,7 @@
+{{- if .Store.Get "hasImage" -}}
+{{ partial "images/lightbox.html" . }}
+{{- end -}}
+
 {{ if .Store.Get "hasMath" }}
 {{ partial "diagrams/math.html" . }}
 {{ end }}

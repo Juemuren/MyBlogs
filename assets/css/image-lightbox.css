@@ -1,0 +1,48 @@
+.post-content img {
+  cursor: zoom-in;
+}
+
+.post-content a img {
+  cursor: inherit;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.75);
+  cursor: zoom-out;
+  touch-action: none;
+}
+
+.image-lightbox.is-open {
+  display: flex;
+}
+
+.image-lightbox img {
+  max-width: min(100%, 1280px);
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-out;
+  transform-origin: center center;
+  transition: transform 120ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.image-lightbox.is-zooming img {
+  cursor: grab;
+  transition: none;
+}
+
+.image-lightbox.is-dragging img {
+  cursor: grabbing;
+}
+
+body.has-image-lightbox {
+  overflow: hidden;
+}

@@ -1,0 +1,5 @@
+{{- $style := resources.Get "css/image-lightbox.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+{{- $script := resources.Get "js/image-lightbox.js" | minify | fingerprint -}}
+<script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
