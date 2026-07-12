@@ -1,3 +1,4 @@
+arcsin
 arctan
 bigg
 binom
