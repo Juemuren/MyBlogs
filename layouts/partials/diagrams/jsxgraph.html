@@ -1,0 +1,67 @@
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jsxgraph@1.12.2/distrib/jsxgraph.css"
+  crossorigin="anonymous"
+/>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/jsxgraph@1.12.2/distrib/jsxgraphcore.js"
+  crossorigin="anonymous"
+></script>
+<script>
+  function applyThemeColors() {
+    const primaryColors = {
+      strokeColor: "var(--primary)",
+      highlightStrokeColor: "var(--primary)",
+    };
+    const secondaryColors = {
+      strokeColor: "var(--secondary)",
+      highlightStrokeColor: "var(--primary)",
+    };
+    const themeColors = {
+      fillColor: "var(--theme)",
+      highlightFillColor: "var(--theme)",
+    }
+    const options = JXG.Options;
+    const primaryElements = [
+      options.text,
+      options.label,
+      options.slider.highline,
+      options.slider.label,
+    ]
+    const secondaryElements =  [
+      options.ticks,
+      options.slider.baseline,
+      options.slider.ticks,
+    ]
+    const themeElements = [
+      options.slider
+    ]
+    primaryElements.forEach((target) => Object.assign(target, primaryColors));
+    secondaryElements.forEach((target) => Object.assign(target, secondaryColors));
+    themeElements.forEach((target) => Object.assign(target, themeColors))
+  }
+
+  function renderDiagram(source, index) {
+    const container = document.createElement("div");
+    container.id = `jsxgraph-board-${index + 1}`;
+    container.className = "jxgbox jsxgraph-container";
+    container.setAttribute("role", "img");
+    source.replaceWith(container);
+
+    const render = Function("JXG", "BOARDID", source.textContent.trim());
+    render(JXG, container.id);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    applyThemeColors();
+    document.querySelectorAll("pre.jsxgraph").forEach(renderDiagram);
+  });
+</script>
+<style>
+  .jsxgraph-container {
+    margin: var(--content-gap) 0;
+    width: 100%;
+    height: 420px;
+    border-color: var(--border);
+    background: var(--theme);
+  }
+</style>
