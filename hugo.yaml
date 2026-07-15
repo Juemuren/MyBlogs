@@ -73,6 +73,9 @@ languages:
         - name: 关于
           url: /about
           weight: 7
+        - name: 仓库
+          url: https://github.com/juemuren/blog
+          weight: 8
 
 params:
   env: production
@@ -97,21 +100,11 @@ params:
   assets:
     favicon: favicon.svg
 
-  profileMode:
-    enabled: true
-    title: 无限能指
-    subtitle: 在逻辑、思辨与诗意间滑动
-    imageUrl: favicon.svg
-    imageTitle: 无限能指
-    imageWidth: 250
-    imageHeight: 250
-    buttons:
-      - name: 合集
-        url: posts
-      - name: 关于
-        url: about
-      - name: 仓库
-        url: https://github.com/juemuren/blog
+  homeInfoParams:
+    title: 在逻辑、思辨与诗意间滑动
+    content: |
+      [数学](categories/数学/) | [哲学](categories/哲学/) | [艺术](categories/艺术/) & [小说](categories/小说/)
+
 
   socialIcons:
     - name: github
