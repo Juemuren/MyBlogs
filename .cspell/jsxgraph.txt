@@ -1,0 +1,4 @@
+BOARDID
+boundingbox
+fzero
+jsxgraph

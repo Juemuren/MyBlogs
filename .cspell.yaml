@@ -8,6 +8,8 @@ dictionaryDefinitions:
     path: ./.cspell/math.txt
   - name: tikz
     path: ./.cspell/tikz.txt
+  - name: jsxgraph
+    path: ./.cspell/jsxgraph.txt
   - name: tools
     path: ./.cspell/tools.txt
   - name: web
@@ -20,6 +22,7 @@ dictionaries:
   - blog-words
   - math
   - tikz
+  - jsxgraph
   - tools
   - web
   - hugo
