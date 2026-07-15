@@ -8,36 +8,45 @@
 ></script>
 <script>
 function applyThemeColors() {
-  const primaryColors = {
-    strokeColor: "var(--primary)",
-    highlightStrokeColor: "var(--primary)",
-  };
-  const secondaryColors = {
-    strokeColor: "var(--secondary)",
-    highlightStrokeColor: "var(--primary)",
-  };
-  const themeColors = {
-    fillColor: "var(--theme)",
-    highlightFillColor: "var(--theme)",
-  }
-  const options = JXG.Options;
-  const primaryElements = [
-    options.text,
-    options.label,
-    options.slider.highline,
-    options.slider.label,
-  ]
-  const secondaryElements =  [
-    options.ticks,
-    options.slider.baseline,
-    options.slider.ticks,
-  ]
-  const themeElements = [
-    options.slider
-  ]
-  primaryElements.forEach((target) => Object.assign(target, primaryColors));
-  secondaryElements.forEach((target) => Object.assign(target, secondaryColors));
-  themeElements.forEach((target) => Object.assign(target, themeColors))
+  const primary = "var(--primary)"
+  const secondary = "var(--secondary)"
+  const theme = "var(--theme)"
+
+  const options = window.JXG.Options;
+  Object.assign(options.text, {
+    strokeColor: primary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.label, {
+    strokeColor: primary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.ticks, {
+    strokeColor: secondary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.slider, {
+    strokeColor: primary,
+    highlightStrokeColor: primary,
+    fillColor: theme,
+    highlightFillColor: theme,
+  });
+  Object.assign(options.slider.baseline, {
+    strokeColor: secondary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.slider.ticks, {
+    strokeColor: secondary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.slider.highline, {
+    strokeColor: primary,
+    highlightStrokeColor: primary,
+  });
+  Object.assign(options.slider.label, {
+    strokeColor: primary,
+    highlightStrokeColor: primary,
+  });
 }
 
 function renderDiagram(source, index) {
