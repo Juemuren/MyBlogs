@@ -15,10 +15,10 @@ function renderDiagram(source) {
   const code = source.textContent.trim();
   script.textContent = code;
 
-  const wrapper = document.createElement('div');
-  wrapper.className = 'tikz-container';
-  source.replaceWith(wrapper);
-  wrapper.appendChild(script);
+  const container = document.createElement('div');
+  container.className = 'tikz-container';
+  source.replaceWith(container);
+  container.appendChild(script);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
