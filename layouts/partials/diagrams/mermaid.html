@@ -1,62 +1,59 @@
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
 
-  function getCurrentTheme() {
-    return document.querySelector("html").dataset.theme === 'dark'
-      ? 'dark'
-      : 'neutral';
-  }
+const SELECTOR = 'pre.mermaid'
 
-  function saveOriginalTexts() {
-    const diagrams = document.querySelectorAll('.mermaid');
-    diagrams.forEach((el) => {
-      const originalText = el.textContent.trim();
-      el.setAttribute('data-original', originalText);
-    });
-  }
+function getCurrentTheme() {
+  return document.querySelector("html").dataset.theme === 'dark'
+    ? 'dark'
+    : 'neutral';
+}
 
-  function loadOriginalTexts() {
-    const diagrams = document.querySelectorAll('.mermaid');
-    diagrams.forEach((el) => {
-      el.removeAttribute('data-processed');
-      el.innerHTML = '';
-      const original = el.getAttribute('data-original');
-      if (original !== null) {
-        el.textContent = original;
+function saveSourceCodes() {
+  document.querySelectorAll(SELECTOR).forEach((source) => {
+    const code = source.textContent.trim();
+    source.setAttribute('data-source-code', code);
+  });
+}
+
+function loadSourceCodes() {
+  document.querySelectorAll(SELECTOR).forEach((source) => {
+    source.removeAttribute('data-processed');
+    source.innerHTML = '';
+    source.textContent = source.getAttribute('data-source-code');
+  });
+}
+
+async function renderDiagrams() {
+  const theme = getCurrentTheme();
+  mermaid.initialize({ theme, startOnLoad: false });
+
+  loadSourceCodes()
+
+  await mermaid.run({
+    querySelector: SELECTOR,
+    suppressErrors: false
+  });
+}
+
+async function init() {
+  saveSourceCodes();
+  await renderDiagrams();
+}
+
+function observeThemeChanges() {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'data-theme') {
+        renderDiagrams();
       }
     });
+  });
+  const target = document.querySelector('html');
+  if (target) {
+    observer.observe(target, { attributes: true });
   }
+}
 
-  async function renderDiagrams() {
-    const theme = getCurrentTheme();
-    mermaid.initialize({ theme, startOnLoad: false });
-
-    loadOriginalTexts()
-
-    await mermaid.run({
-      querySelector: '.mermaid',
-      suppressErrors: false
-    });
-  }
-
-  async function init() {
-    saveOriginalTexts();
-    await renderDiagrams();
-  }
-
-  function observeThemeChanges() {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          renderDiagrams();
-        }
-      });
-    });
-    const target = document.querySelector('html');
-    if (target) {
-      observer.observe(target, { attributes: true });
-    }
-  }
-
-  init().then(() => observeThemeChanges());
+init().then(() => observeThemeChanges());
 </script>

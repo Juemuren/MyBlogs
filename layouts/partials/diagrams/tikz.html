@@ -9,23 +9,26 @@
   crossorigin="anonymous">
 </script>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll('.tikz');
-    elements.forEach(el => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'tikz-container';
-      el.parentNode.replaceChild(wrapper, el);
-      const script = document.createElement('script');
-      script.type = 'text/tikz';
-      script.textContent = el.textContent.trim();
-      wrapper.appendChild(script);
-    });
-  })
+function renderDiagram(source) {
+  const script = document.createElement('script');
+  script.type = 'text/tikz';
+  const code = source.textContent.trim();
+  script.textContent = code;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'tikz-container';
+  source.replaceWith(wrapper);
+  wrapper.appendChild(script);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('pre.tikz').forEach(renderDiagram);
+})
 </script>
 <style>
 .tikz-container {
   width: fit-content;
-  margin: 0 auto 20px auto;
+  margin: var(--content-gap) auto;
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;

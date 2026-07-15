@@ -4,15 +4,16 @@
   crossorigin="anonymous">
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const elements = document.querySelectorAll(".abc");
-  elements.forEach(function (el) {
-    const abc = el.textContent.trim();
-    ABCJS.renderAbc(el, abc, {
-      responsive: "resize",
-      selectTypes: false,
-      oneSvgPerLine: true,
-    });
+function renderDiagram(source) {
+  const code = source.textContent.trim();
+  ABCJS.renderAbc(source, code, {
+    responsive: "resize",
+    selectTypes: false,
+    oneSvgPerLine: true,
   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("pre.abc").forEach(renderDiagram);
 });
 </script>
