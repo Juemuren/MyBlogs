@@ -1,2 +1,5 @@
 - id: lastmod
   translation: "更新于 {{ . }}"
+
+- id: archive_summary
+  translation: "共 {{ .Articles }} 篇文章，累计 {{ .Words }} 字"
