@@ -2,13 +2,6 @@
   "recommendations": [
     "yzhang.markdown-all-in-one",
     "DavidAnson.vscode-markdownlint",
-    "streetsidesoftware.code-spell-checker",
-    "tekumara.typos-vscode",
-    "huacnlee.autocorrect",
-    "ltex-plus.vscode-ltex-plus",
     "EditorConfig.EditorConfig",
-    "budparr.language-hugo-vscode",
-    "tamasfe.even-better-toml",
-    "redhat.vscode-yaml",
   ]
 }
